@@ -14,7 +14,6 @@ class HomeController extends AbstractController
     {
 
         dd($callApiService->getClimbingData());
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
