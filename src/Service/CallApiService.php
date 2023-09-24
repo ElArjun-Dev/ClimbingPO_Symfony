@@ -14,20 +14,25 @@ class CallApiService
         $this->apiKey = $apiKey;
     }
 
-    public function getClimbingData(): array
+    private function getApi (string $var)
     {
         $headers = [
             'HttpApiAccessToken' => $this->apiKey,
         ];
-
+    
         $response  = $this->client->request(
             'GET',
-            'https://api.oblyk.org/api/v1/public/crags/546',
+            'https://api.oblyk.org/api/v1/public/crags/',
             [
                 'headers' => $headers,
             ]
         );
-
+    
         return $response->toArray();
+        
+    }
+    public function getClimbingData(): array
+    {
+        return $this->getApi('546');
     }
 }

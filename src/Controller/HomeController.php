@@ -9,13 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'home')]
     public function index(CallApiService $callApiService): Response
     {
 
-        dd($callApiService->getClimbingData());
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'data' => $callApiService->getClimbingData(),
         ]);
     }
 }
